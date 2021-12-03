@@ -1,10 +1,10 @@
 package be.intecbrussel.sellers;
 
 public class Stock {
-    private int iceRockets;
-    private int cones;
-    private int balls;
-    private int magni;
+    private int iceRockets=0;
+    private int cones=0;
+    private int balls=0;
+    private int magnum=0;
 
 
     public int getIceRockets() {
@@ -31,12 +31,12 @@ public class Stock {
         this.balls = balls;
     }
 
-    public int getMagni() {
-        return magni;
+    public int getMagnum() {
+        return magnum;
     }
 
-    public void setMagni(int magni) {
-        this.magni = magni;
+    public void setMagnum(int magnum) {
+        this.magnum = magnum;
     }
 
 

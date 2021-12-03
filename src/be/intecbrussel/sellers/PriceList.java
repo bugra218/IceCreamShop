@@ -1,15 +1,19 @@
 package be.intecbrussel.sellers;
 
-import be.intecbrussel.eatables.MagnumType;
+import be.intecbrussel.eatables.Magnum;
 
 public class PriceList {
     private double ballPrice;
     private double rocketPrice;
     private double magnumStandardPrice;
     public PriceList(){
+        this(0.50,0.80,1);
 
     }
     public PriceList(double ballPrice,double rocketPrice,double magnumStandardPrice){
+        this.ballPrice=ballPrice;
+        this.rocketPrice=rocketPrice;
+        this.magnumStandardPrice=magnumStandardPrice;
 
     }
     public double getBallPrice() {
@@ -28,8 +32,22 @@ public class PriceList {
         this.rocketPrice = rocketPrice;
     }
 
-    public double getMagnumPrice(MagnumType MagnumType) {
-        return magnumStandardPrice;
+    public double getMagnumPrice(Magnum.MagnumType MagnumType) {
+        double magnumPrice = magnumStandardPrice;
+        switch (MagnumType) {
+            case ALPINENUTS:
+                magnumPrice *= 1.5;
+                break;
+            case BLACKCHOCOLATE:
+            case WHITECHOCOLATE:
+            case MILKCHOCOLATE:
+                magnumPrice *= 1;
+                break;
+            case ROMANTICSTRAWBERRIES:
+                magnumPrice *= 1.8;
+                break;
+        }
+        return magnumPrice;
     }
 
     public void setMagnumStandardPrice(double magnumStandardPrice) {

@@ -2,31 +2,50 @@ package be.intecbrussel.sellers;
 
 import be.intecbrussel.eatables.*;
 
-public class IceCreamSalon implements IceCreamSeller{
+public class IceCreamSalon implements IceCreamSeller {
 
     private PriceList priceList;
-    private double totalProfit;
+    private double totalProfit = 0;
+
+
+    public IceCreamSalon() {
+        this(new PriceList());
+
+    }
+
+    public IceCreamSalon(PriceList priceList) {
+        this.priceList = priceList;
+
+    }
 
     @Override
-    public Cone orderCone(Flavor[] flavor) {
-        return null;
+    public Cone orderCone(Cone.Flavor[] flavor) {
+        Cone cone = new Cone(flavor);
+        totalProfit = totalProfit + priceList.getBallPrice() * flavor.length;
+
+        return cone;
     }
 
     @Override
     public IceRocket orderIceRocket() {
-        return null;
+        IceRocket iceRocket = new IceRocket();
+        totalProfit = totalProfit + priceList.getRocketPrice();
+        return iceRocket;
     }
 
-    @Override
-    public Magnum orderMagnum(MagnumType magnumType) {
-        return null;
+    public Magnum orderMagnum(Magnum.MagnumType magnumType) {
+        Magnum magnum = new Magnum(magnumType);
+        totalProfit = totalProfit + priceList.getMagnumPrice(magnumType);
+
+        return magnum;
     }
 
     @Override
     public double getProfit() {
-        return 0;
+        return totalProfit;
     }
-    public String toString(){
-        return null;
+    @Override
+    public String toString() {
+        return "IceCreamSalon totalProfit=" + totalProfit;
     }
 }
